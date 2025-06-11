@@ -1,0 +1,235 @@
+#transcript-sender-ui {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  font-family: "YouTube Sans", "Roboto", sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Dark mode support */
+html[dark] #transcript-sender-ui,
+[dark] #transcript-sender-ui,
+ytd-app[dark] #transcript-sender-ui {
+  background: #272727;
+  border-color: #3f3f3f;
+  color: #ffffff;
+}
+
+.ts-header {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #030303;
+  line-height: 1.4;
+}
+
+html[dark] .ts-header,
+[dark] .ts-header,
+ytd-app[dark] .ts-header {
+  color: #ffffff;
+}
+
+.ts-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ts-button {
+  background: #065fd4;
+  color: white !important;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 90px;
+  text-align: center;
+  font-family: inherit;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.ts-button:hover {
+  background: #0652b8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.ts-button:active {
+  background: #0544a0;
+  transform: translateY(0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.ts-button:focus-visible {
+  outline: 2px solid #065fd4;
+  outline-offset: 2px;
+}
+
+.ts-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ts-button:disabled:hover {
+  background: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Ripple effect for buttons */
+.ts-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ts-button:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+.ts-status {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  line-height: 1.4;
+}
+
+.ts-status:not(:empty) {
+  opacity: 1;
+}
+
+.ts-status.success {
+  color: #0d7a3e;
+}
+
+html[dark] .ts-status.success,
+[dark] .ts-status.success,
+ytd-app[dark] .ts-status.success {
+  color: #2ba640;
+}
+
+.ts-status.error {
+  color: #c00;
+}
+
+html[dark] .ts-status.error,
+[dark] .ts-status.error,
+ytd-app[dark] .ts-status.error {
+  color: #ff6b6b;
+}
+
+/* Ensure our UI doesn't get hidden by YouTube's styles */
+#transcript-sender-ui * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Options section */
+.ts-options {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #606060;
+}
+
+html[dark] .ts-options,
+[dark] .ts-options,
+ytd-app[dark] .ts-options {
+  color: #aaa;
+}
+
+.ts-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ts-options input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.ts-status:not(:empty):not(.success):not(.error) {
+  animation: pulse 1.5s infinite;
+}
+
+/* Mobile responsive design */
+@media (max-width: 600px) {
+  #transcript-sender-ui {
+    padding: 12px;
+  }
+  
+  .ts-header {
+    font-size: 14px;
+  }
+  
+  .ts-buttons {
+    gap: 6px;
+  }
+  
+  .ts-button {
+    padding: 6px 12px;
+    font-size: 13px;
+    min-width: 80px;
+  }
+}
+
+/* Ensure buttons are clickable */
+.ts-button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Fix for YouTube's aggressive styling */
+#transcript-sender-ui .ts-button {
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+#transcript-sender-ui .ts-button * {
+  pointer-events: none;
+}

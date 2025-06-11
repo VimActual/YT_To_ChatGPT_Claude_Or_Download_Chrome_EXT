@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 16px;
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #ffffff;
+    }
+    
+    h2 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #030303;
+    }
+    
+    .info {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #606060;
+      line-height: 1.5;
+    }
+    
+    .current-video {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: #e3f2fd;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #0d47a1;
+      line-height: 1.5;
+      display: none;
+    }
+    
+    .current-video.visible {
+      display: block;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border: 1px solid #d3d3d3;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #065fd4;
+    }
+    
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #065fd4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    button:hover {
+      background: #0652b8;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    button:active {
+      background: #0544a0;
+      transform: scale(0.98);
+    }
+    
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    #status {
+      margin-top: 12px;
+      font-size: 13px;
+      text-align: center;
+      min-height: 18px;
+    }
+    
+    .error {
+      color: #c00;
+    }
+    
+    .success {
+      color: #0d7a3e;
+    }
+    
+    .footer {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 12px;
+      color: #909090;
+      text-align: center;
+    }
+    
+    .shortcuts {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #606060;
+    }
+    
+    .shortcuts kbd {
+      background: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 2px 4px;
+      font-family: monospace;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <h2>YouTube Transcript Sender</h2>
+  
+  <div class="info">
+    Go to any YouTube video page to see the transcript extraction buttons above the related videos.
+  </div>
+  
+  <div id="current-video" class="current-video">
+    <strong>Current video:</strong> <span id="video-title"></span>
+  </div>
+  
+  <input type="text" id="url-input" placeholder="Or paste a YouTube URL here">
+  <button id="go-button">Go to Video</button>
+  
+  <div class="shortcuts">
+    <strong>Tip:</strong> Press <kbd>Enter</kbd> to go to video
+  </div>
+  
+  <div id="status"></div>
+  
+  <div class="footer">
+    Extract and send YouTube transcripts to ChatGPT or Claude
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
