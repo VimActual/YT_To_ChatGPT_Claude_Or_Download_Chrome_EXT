@@ -51,8 +51,8 @@ Verdict: Useful and informative - provides concrete data and actionable advice
 
 1. **Download the extension**
    ```bash
-   git clone https://github.com/yourusername/youtube-transcript-sender.git
-   cd youtube-transcript-sender
+   git clone [https://github.com/yourusername/youtube-transcript-sender.git](https://github.com/VimActual/YT_To_ChatGPT_Claude_Or_Download_Chrome_EXT)
+   cd YT_To_ChatGPT_Claude_Or_Download_Chrome_EXT
    ```
 
 2. **Open Chrome Extensions**
